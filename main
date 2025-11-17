@@ -1,0 +1,44 @@
+package examen;
+
+public class main {
+    public static void main(String[] args) {
+
+        // r a v
+        MiTeleferico mt = new MiTeleferico();
+
+        // agregacion de cabinas
+        mt.agregarCabina("Amarillo", 1);
+        mt.agregarCabina("Amarillo", 2);
+
+        mt.agregarCabina("Rojo", 1);
+        mt.agregarCabina("Rojo", 2);
+
+        mt.agregarCabina("Verde", 1);
+
+        // fila de personas
+        mt.agregarPersonaFila(new Persona("Luis", 20, 60), "Amarillo");
+        mt.agregarPersonaFila(new Persona("Ana", 30, 65), "Amarillo");
+        mt.agregarPersonaFila(new Persona("Pedro", 50, 70), "Amarillo");
+
+        mt.agregarPersonaFila(new Persona("Maria", 70, 55), "Rojo");
+        mt.agregarPersonaFila(new Persona("Jose", 26, 80), "Rojo");
+
+        mt.agregarPersonaFila(new Persona("Juan", 22, 68), "Verde");
+
+        // subiendo a la cabina a una persona xd 
+        System.out.println("Subiendo primera persona del Amarillo a cabina 1");
+        mt.lineas[0].agregarPrimeroACabina(1);
+
+        // verificar
+        System.out.println("\ntodas las cabinas cumplen las reglas?");
+        System.out.println(mt.verificarTodasCabinas());
+
+        // calcu la tari
+        System.out.println("\ningreso total del teleférico:");
+        System.out.println(mt.calcularIngresos() + " Bs");
+
+        // limea con mas regula
+        System.out.println("\nLinea con más tarifa regular:");
+        System.out.println(mt.lineaMasRegular());
+    }
+}
