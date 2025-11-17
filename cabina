@@ -1,0 +1,44 @@
+package examen;
+
+public class Cabina {
+    int nroCabina;
+    Persona[] personasAbordo;
+
+    public Cabina(int nroCabina) {
+        this.nroCabina = nroCabina;
+        personasAbordo = new Persona[10]; 
+    }
+
+    //  10 y 850 Kg
+    public boolean agregarPersona(Persona p) {
+        float peso = 0;
+        int cant = 0;
+
+        for (int i = 0; i < personasAbordo.length; i++) {
+            if (personasAbordo[i] != null) {
+                peso += personasAbordo[i].getPesoPersona();
+                cant++;
+            }
+        }
+
+        if (cant >= 10) return false;
+        if (peso + p.getPesoPersona() > 850) return false;
+
+        personasAbordo[cant] = p;
+        return true;
+    }
+
+    public float getPesoTotal() {
+        float peso = 0;
+        for (Persona p : personasAbordo)
+            if (p != null) peso += p.getPesoPersona();
+        return peso;
+    }
+
+    public int getCantidadPersonas() {
+        int c = 0;
+        for (Persona p : personasAbordo)
+            if (p != null) c++;
+        return c;
+    }
+}
